@@ -1,6 +1,3 @@
-# MultiModal_Vision_Transormation_Model(Siglip,PaligemmaModel)
- This model is described based on the working principles of the Paligemma and Siglip models.
-
 # 🖼️📝 MultiModal Vision-Language Model: SigLIP + PaliGemma
 
 This project implements a powerful multimodal model that combines **SigLIP Vision Transformer** and **PaliGemma Language Model** for tasks like image captioning, visual question answering, and conditional text generation. The model seamlessly integrates vision and language processing, enabling it to understand and generate text based on visual inputs.
