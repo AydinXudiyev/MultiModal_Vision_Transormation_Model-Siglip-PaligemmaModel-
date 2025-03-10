@@ -1,5 +1,8 @@
-# 🖼️📝 MultiModal Vision-Language Model: SigLIP + PaliGemma
+Certainly! Below is the updated `README.md` file tailored for your repository with the new structure. I've also included instructions for setting up and using the repository.
 
+---
+
+# 🖼️📝 MultiModal Vision-Language Model: SigLIP + PaliGemma
 This project implements a powerful multimodal model that combines **SigLIP Vision Transformer** and **PaliGemma Language Model** for tasks like image captioning, visual question answering, and conditional text generation. The model seamlessly integrates vision and language processing, enabling it to understand and generate text based on visual inputs.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -33,23 +36,23 @@ This project implements a powerful multimodal model that combines **SigLIP Visio
    pip install -r requirements.txt
    ```
 
-3. Download the model weights and configuration file into the `model/` directory.
+3. Download the model weights and configuration file into the `models/` directory.
 
 ### Usage
 
 Here's how to load the model and generate text based on an image and a prompt:
 
 ```python
-from model_loader import load_hf_model
+from scripts.inference import load_hf_model
 from PIL import Image
 
 # Load the model and tokenizer
-model_path = "model/"
+model_path = "models/"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, tokenizer = load_hf_model(model_path, device)
 
 # Load and preprocess the image
-image = Image.open("path/to/image.jpg")
+image = Image.open("data/test_images/example.jpg")
 
 # Tokenize the text prompt
 prompt = "What is in this image?"
@@ -96,14 +99,24 @@ The model's behavior can be customized using the `config.json` file. Key paramet
 
 ```
 MultiModal_Vision_Transormation_Model-Siglip-PaligemmaModel-/
-├── model/                   # Directory for model weights and config
+├── models/                  # Directory for model implementations
+│   ├── modeling_siglip.py   # SigLIP model
+│   ├── modelling_gemma.py   # Gemma model
 │   ├── config.json          # Model configuration
 │   ├── model.safetensors    # Model weights
-├── model_loader.py          # Script to load the model
-├── modelling_gemma.py       # Implementation of the Gemma model
-├── modelling_siglip.py      # Implementation of the SigLIP model
+├── scripts/                 # Directory for scripts
+│   ├── inference.py         # Inference script
+│   ├── launch_inference.sh  # Shell script for inference
+├── utils/                   # Directory for utility functions
+│   ├── utils.py             # Utility functions
+├── data/                    # Directory for data and test images
+│   ├── test_images/         # Test images
+├── config/                  # Directory for configuration files
+│   ├── .gitattributes       # Git attributes
+│   ├── .gitignore           # Git ignore
+├── docs/                    # Directory for documentation
+│   ├── README.md            # Project documentation
 ├── requirements.txt         # List of dependencies
-├── README.md                # This file
 └── LICENSE                  # License file
 ```
 
